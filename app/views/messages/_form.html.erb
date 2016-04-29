@@ -1,22 +1,28 @@
-<%= form_for(@message) do |f| %>
+<div class="form-group">
+    <%= form_for(@message) do |f| %>
 
-<% if @message.errors.present? %>
-  <div class="alert alert-danger">
-<%= alert %>
-    <ul>
-<% @message.errors.full_messages.each do |full_message| %>
-      <li>
-<%= full_message %>
-      </li>
-<% end %>
-    </ul>
+    <% if @message.errors.present? %>
+          <div class="alert alert-danger">
+    <%= alert %>
+        <ul>
+    <% @message.errors.full_messages.each do |full_message| %>
+          <li>
+    <%= full_message %>
+          </li>
+    <% end %>
+        </ul>
+</div>
+    <% end %>
+
+<div class="form-group">
+    <label for="name" class="control-label">名前</label>
+    <%= f.text_field :name, class: "form-control", placeholder: "名前" %>
+</div>
+
+<div class="form-group">
+    <label for="body" class="control-label">内容</label>
+    <%= f.text_area :body, class: "form-control", rows: "3", placeholder: "内容" %>
   </div>
-<% end %>
-  
-  名前:
-  <%= f.text_field :name %>
 
-  内容:
-  <%= f.text_field :body %>
-  <%= f.submit class: "btn btn-sm btn-primary"  %>
+      <%= f.submit class: "btn btn-sm btn-primary"  %>
 <% end %>
